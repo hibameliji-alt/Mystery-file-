@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101013">
+<meta name="description" content="Mystery Files: investigate clues, solve puzzles, and crack three original detective cases.">
+<title>Mystery Files | Detective Bureau</title>
+<style>
+:root{--bg:#101013;--panel:#19191f;--panel2:#202027;--line:#34343d;--text:#f4f0e9;--muted:#a7a3a0;--red:#bd4c52;--gold:#d4b477;--green:#8fbe9c;--shadow:0 18px 55px #0005}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#38252a 0,transparent 38%),var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,48px);background:#101013eF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.12em;font-size:14px}.brandmark{display:grid;place-items:center;width:38px;height:38px;border:1px solid #b94a52;border-radius:11px;color:#e5b2ae;background:#351e23;font-size:20px}
+.top-right{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.status-dot{width:7px;height:7px;background:var(--green);border-radius:50%;display:inline-block;box-shadow:0 0 12px #8fbe9c88}
+main{width:min(1180px,100%);margin:0 auto;padding:clamp(22px,4vw,48px) clamp(16px,4vw,30px) 64px}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--gold);font-weight:750}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin:10px 0 34px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6.3vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500;margin:14px 0 18px}h1 span{color:#d5a3a0;font-style:italic}.lead{max-width:570px;color:#bdb8b2;font-size:clamp(15px,1.6vw,18px);line-height:1.75}
+.hero-art{min-height:245px;position:relative;border:1px solid #5b4141;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#302329,#17171d 65%);box-shadow:var(--shadow);display:grid;place-items:center}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #a66b68;border-radius:50%;width:240px;height:240px;opacity:.18}.hero-art:after{width:180px;height:180px}
+.moon{position:absolute;width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#e0c5a2,#8b7474);top:32px;right:50px;box-shadow:0 0 65px #c38a7550}
+.city{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(0deg,#0b0b0e,#16151b);clip-path:polygon(0 30%,8% 30%,8% 52%,18% 52%,18% 16%,29% 16%,29% 45%,38% 45%,38% 5%,49% 5%,49% 40%,58% 40%,58% 23%,69% 23%,69% 50%,79% 50%,79% 10%,91% 10%,91% 39%,100% 39%,100% 100%,0 100%)}
+.case-stamp{position:absolute;left:22px;top:20px;transform:rotate(-8deg);border:2px solid #b94c52;color:#d9797d;padding:6px 10px;font-size:11px;font-weight:900;letter-spacing:.18em}
+.file-folder{position:relative;z-index:2;width:140px;height:112px;border:1px solid #a77a61;background:linear-gradient(145deg,#6b4b3d,#352b2b);transform:rotate(-7deg);border-radius:4px;box-shadow:10px 15px 0 #08080a88;display:grid;place-items:center;color:#f0d7b3;font:italic 20px Georgia;text-align:center}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:42px 0 18px}.section-head h2{font:500 clamp(25px,3vw,34px) Georgia,serif;margin:5px 0 0}.small-muted{font-size:13px;color:var(--muted)}
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.case-card{background:linear-gradient(145deg,#202027,#17171c);border:1px solid var(--line);border-radius:15px;padding:19px;display:flex;flex-direction:column;min-height:300px;transition:transform .2s,border-color .2s;position:relative;overflow:hidden}
+.case-card:hover{transform:translateY(-3px);border-color:#775154}.case-number{font-size:10px;letter-spacing:.2em;color:var(--gold);font-weight:800}.case-icon{font-size:32px;margin:18px 0 9px}.case-card h3{font:500 24px Georgia,serif;margin:0 0 9px}.case-card p{color:var(--muted);font-size:13px;line-height:1.65;margin:0 0 18px}.case-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;margin-bottom:16px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:5px 8px;border:1px solid #44404a;border-radius:5px;color:#c9c2bc}.btn{border:1px solid #9f444b;background:#a73e47;color:#fff4ef;border-radius:8px;padding:12px 15px;font-weight:750;font-size:13px;letter-spacing:.02em;transition:filter .2s,transform .2s}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn.secondary{background:#26252d;border-color:#45424b;color:var(--text)}.btn.ghost{background:transparent;border-color:#48434b;color:#d8d0ca}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.progress-wrap{height:5px;background:#343139;border-radius:99px;overflow:hidden;margin:12px 0 0}.progress-bar{height:100%;background:var(--gold);width:0;transition:width .3s}
+footer{border-top:1px solid #ffffff12;padding:20px;text-align:center;color:#77727a;font-size:11px;letter-spacing:.08em}
+.modal{position:fixed;inset:0;z-index:30;background:#050507d9;backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:14px;overflow:auto}.modal.open{display:flex}.game-panel{width:min(1000px,100%);max-height:min(92dvh,1000px);overflow:auto;border:1px solid #51424a;border-radius:17px;background:#15151b;box-shadow:0 30px 100px #000b}.game-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;background:#19191ff5;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.game-head h2{font:500 22px Georgia,serif;margin:2px 0}.close{border:1px solid #4a454d;background:#25242b;color:#eee;border-radius:8px;width:40px;height:40px;font-size:22px}.game-body{padding:clamp(16px,3vw,28px)}.case-intro{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:22px}.case-intro h3{font:500 clamp(27px,4vw,38px) Georgia,serif;margin:6px 0 10px}.case-intro p{color:#b9b2ad;max-width:700px;margin:0}.case-badge{border:1px solid #8b454b;color:#e4a3a0;border-radius:7px;padding:8px 10px;font-size:10px;letter-spacing:.12em;font-weight:800;white-space:nowrap}
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.subpanel{background:#1d1d24;border:1px solid #34333d;border-radius:12px;padding:17px;min-width:0}.subpanel h4{font-size:11px;text-transform:uppercase;letter-spacing:.17em;color:var(--gold);margin:0 0 13px}.clue-list,.suspect-list{display:grid;gap:9px}.clue{width:100%;text-align:left;display:flex;gap:11px;align-items:start;background:#25252d;border:1px solid #3a3943;color:var(--text);padding:12px;border-radius:9px}.clue:hover,.clue.selected{border-color:#b56a6d;background:#30262d}.clue .num{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:7px;background:#3c2c32;color:#e6b4ac;font-size:12px;font-weight:800}.clue strong{display:block;font-size:13px;margin-bottom:3px}.clue small{display:block;color:#a7a1a2;font-size:12px;line-height:1.5}.clue-detail{margin-top:12px;padding:13px;border-left:2px solid var(--gold);background:#17171d;color:#cfc8c2;font-size:13px;min-height:64px}.suspect{display:flex;align-items:center;gap:10px;text-align:left;width:100%;padding:11px;background:#25252d;border:1px solid #3a3943;border-radius:9px;color:var(--text)}.suspect:hover,.suspect.selected{border-color:#b56a6d;background:#30262d}.avatar{display:grid;place-items:center;width:35px;height:35px;flex:0 0 35px;border-radius:50%;background:#39303a;color:#e7c7be;font-size:14px}.suspect strong{display:block;font-size:13px}.suspect small{display:block;color:#a7a1a2;font-size:11px}.puzzle-box{margin-top:18px;padding:17px;background:#292329;border:1px solid #5a3c43;border-radius:12px}.puzzle-box h4{color:#e0b1a8;margin:0 0 8px;font-size:11px;letter-spacing:.15em;text-transform:uppercase}.puzzle-box p{color:#d0c5c0;font-size:13px;margin:0 0 12px}.answer-row{display:flex;gap:8px}.answer-row input{min-width:0;flex:1;background:#101014;border:1px solid #4c4249;color:white;border-radius:8px;padding:11px 12px}.feedback{font-size:12px;margin-top:10px;min-height:18px;color:var(--muted)}.feedback.good{color:var(--green)}.feedback.bad{color:#e78e91}.submit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding-top:17px;border-top:1px solid var(--line)}.result{display:none;padding:20px;border:1px solid #56745d;background:#1b2920;border-radius:12px;margin-top:18px}.result.show{display:block}.result h4{color:#b8e1c1;font:500 24px Georgia,serif;margin:0 0 8px}.result p{color:#c5d8c8;font-size:13px;margin:0 0 14px}.hint{margin-top:10px;color:var(--gold);font-size:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#2b292f;border:1px solid #61525a;padding:11px 16px;border-radius:10px;box-shadow:var(--shadow);z-index:50;opacity:0;pointer-events:none;transition:.25s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-art{min-height:200px}.cases{grid-template-columns:1fr}.case-card{min-height:0}.case-icon{margin:10px 0}.game-grid{grid-template-columns:1fr}.case-intro{grid-template-columns:1fr}.case-badge{justify-self:start}.top-right .status-text{display:none}.section-head{align-items:start;flex-direction:column}.submit-row{align-items:stretch;flex-direction:column}.submit-row .btn{width:100%}}
+@media(min-width:761px) and (max-width:980px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.case-card:last-child{grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brandmark">⌕</div><span>MYSTERY FILES</span></div>
+  <div class="top-right"><span class="status-dot"></span><span class="status-text">Bureau online</span><span id="xpLabel">0 XP</span></div>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Private Detective Bureau · Est. 1987</div>
+      <h1>Every clue tells<br> <span>two stories.</span></h1>
+      <p class="lead">Three files. A web of secrets. Your instincts are your best weapon. Study the evidence, challenge the alibis, and decide what really happened.</p>
+    </div>
+    <div class="hero-art" aria-label="Illustration of a classified detective file against a moonlit city">
+      <div class="moon"></div><div class="case-stamp">CLASSIFIED</div><div class="file-folder">CASE<br>ARCHIVE</div><div class="city"></div>
+    </div>
+  </section>
+  <section>
+    <div class="section-head"><div><div class="eyebrow">The evidence room</div><h2>Open a case file</h2></div><div class="small-muted" id="caseCount">0 of 3 cases solved</div></div>
+    <div class="cases" id="caseCards"></div>
+  </section>
+  <section class="section-head" style="margin-top:34px">
+    <div><div class="eyebrow">Detective record</div><h2>Your progress</h2></div>
+    <div class="small-muted">Progress saves on this device</div>
+  </section>
+  <section class="subpanel">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><strong style="font:500 20px Georgia,serif">Case completion</strong><span id="progressText" class="small-muted">0 / 3</span></div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:12px"><span id="badgeText">Badge: Rookie Detective</span><button class="btn ghost" id="resetProgress">Reset progress</button></div>
+  </section>
+</main>
+<footer>MYSTERY FILES · FICTIONAL CASES · TRUST THE EVIDENCE, NOT THE FIRST STORY.</footer>
+
+<div class="modal" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="game-panel">
+  <div class="game-head"><div><div class="eyebrow" id="modalEyebrow">CASE FILE</div><h2 id="modalTitle">The Midnight Mansion</h2></div><button class="close" id="closeModal" aria-label="Close case">×</button></div>
+  <div class="game-body" id="gameContent"></div>
+ </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const CASES = [
+ {id:"mansion",number:"001",title:"The Midnight Mansion",icon:"♢",difficulty:"Easy",type:"Theft · Locked room",summary:"A priceless ruby necklace vanishes during a dinner party. Six guests insist they stayed in the dining room.",intro:"At 9:15 PM, the Ashford Ruby disappeared from a locked display case in the mansion's east gallery. The alarm was not triggered. Four people had a reason to approach the gallery, and one timeline cannot be true.",clues:[
+  {title:"The gallery clock",short:"The clock stopped at 9:05 PM.",detail:"A repair note says the gallery clock has been slow by exactly ten minutes all week. Its displayed time is not reliable."},
+  {title:"A damp cuff",short:"One guest has a wet right sleeve.",detail:"Rain began at 9:00 PM. The conservatory door opens onto the garden, but the ground outside is muddy and would leave footprints."},
+  {title:"The guest book",short:"A signature is written in blue ink.",detail:"The guest book was signed at 8:40 PM. The same blue ink appears on a note found beside the display case."},
+  {title:"The display case",short:"No glass was broken.",detail:"The case was opened with its key. The key was kept in the host's study, and only the host and the housekeeper claim to know where."}
+ ],suspects:[
+  {name:"Evelyn Ashford",role:"The host",bio:"Knows the house and owns the necklace."},
+  {name:"Miles Reed",role:"The pianist",bio:"Played in the dining room all evening."},
+  {name:"Clara Finch",role:"The housekeeper",bio:"Has access to the study and its keys."},
+  {name:"Theo Vale",role:"The guest",bio:"Was seen near the conservatory."}
+ ],correct:2,puzzle:"The key to the study is hidden in a book. The note says: “I have pages but no voice, a spine but no bones. Find me where the stories sleep.” What is it?",answers:["book","a book"],solution:"Clara had access to the study and its keys. The note's riddle points to a book, where the spare key was hidden. The blue ink on the note connects it to the guest-book pen, which Clara used to record arrivals. The clues make Clara the strongest explanation in this fictional case.",hint:"Think of an object with pages and a spine. The answer is where stories are kept."},
+ {id:"manuscript",number:"002",title:"The Missing Manuscript",icon:"✦",difficulty:"Medium",type:"Disappearance · Logic",summary:"A rare manuscript vanishes from a locked library. Three people give conflicting timelines.",intro:"The first edition of The Glass Orchard disappeared from Bellweather Library between 6:00 and 6:30 PM. The room was locked when the librarian returned. A scrap of paper and a contradictory timetable may reveal what happened.",clues:[
+  {title:"The return slip",short:"The book was last logged at 5:50 PM.",detail:"The return slip is signed, but the signature has a different slant from the librarian's usual handwriting."},
+  {title:"The dusty shelf",short:"A clean rectangle remains in the dust.",detail:"The manuscript was removed recently. The clean outline is too narrow for the large book described by the witness."},
+  {title:"The corridor bell",short:"It rang twice at 6:10 PM.",detail:"The bell is connected to the side entrance. The caretaker says it only rings when that door opens."},
+  {title:"The torn note",short:"It reads: “Not the west door.”",detail:"The note's paper matches the library's checkout slips. It may be a reminder about the side entrance rather than the main door."}
+ ],suspects:[
+  {name:"Dr. Rowan",role:"The visiting scholar",bio:"Wanted to study the manuscript overnight."},
+  {name:"Iris Bell",role:"The librarian",bio:"Had the official key to the library."},
+  {name:"Noah Pike",role:"The caretaker",bio:"Maintains the side entrance and corridor bell."},
+  {name:"June Mercer",role:"The student",bio:"Was researching nearby until closing."}
+ ],correct:2,puzzle:"A note gives this sequence: 2, 4, 8, 16, __. What number completes the pattern?",answers:["32","thirty two","thirty-two"],solution:"Noah is the strongest suspect because the corridor bell rang twice at 6:10 PM, indicating the side entrance was opened. The torn note specifically warns about the west door, directing attention to another entrance. The timing and access make Noah the best fit among the available evidence.",hint:"Each number is double the one before it."},
+ {id:"train",number:"003",title:"The Last Train",icon:"☾",difficulty:"Hard",type:"Missing luggage · Deduction",summary:"A passenger's suitcase is found abandoned after a night train. Everyone remembers a different detail.",intro:"At the final stop, a leather suitcase sits alone in carriage seven. Three passengers say they saw its owner after the train left the station, but their accounts do not agree. One small detail breaks the case open.",clues:[
+  {title:"The ticket stub",short:"Seat 14B was booked under a false name.",detail:"The passenger used the name “A. Grey,” but the ticket was purchased in cash at the station ten minutes before departure."},
+  {title:"The tea cup",short:"The cup is still warm at 11:20 PM.",detail:"The dining car closed at 10:45 PM. Someone had access to hot water after closing, likely from the staff service area."},
+  {title:"The timetable",short:"The train stopped unexpectedly for four minutes.",detail:"The conductor's log places the stop at a small platform with no public entrance. Only staff were allowed to step off."},
+  {title:"The luggage tag",short:"The tag is stamped with the wrong destination.",detail:"The tag says Northbridge, but this train terminates in Westhaven. The tag was likely attached before the journey began."}
+ ],suspects:[
+  {name:"A. Grey",role:"The mysterious passenger",bio:"Booked seat 14B under a false name."},
+  {name:"Conductor Hale",role:"The conductor",bio:"Recorded the unexpected stop."},
+  {name:"Mara Quinn",role:"The dining car attendant",bio:"Had access to hot water after closing."},
+  {name:"Felix Ward",role:"The station porter",bio:"Handled luggage before departure."}
+ ],correct:1,puzzle:"The conductor's log uses a simple code: each letter moves one place forward in the alphabet. Decode “TUPQ” by moving each letter one place backward.",answers:["stop"],solution:"Conductor Hale is the strongest suspect in the story because the unexplained four-minute stop occurred at a staff-only platform. The coded word “STOP” points to the key event in the timeline. The false destination tag suggests the luggage was prepared in advance, but the conductor's access and the unusual stop best connect the clues.",hint:"Move each letter one step backward: T becomes S, U becomes T..."}
+];
+const STORAGE_KEY="mystery-files-progress-v1";
+let progress={solved:[],xp:0};
+try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");if(saved&&Array.isArray(saved.solved)){progress=saved}}catch(e){}
+let activeCase=null,selectedClue=0,selectedSuspect=null,puzzleSolved=false,usedHint=false;
+const $=id=>document.getElementById(id);
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress))}catch(e){} renderProgress()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderProgress(){
+ $("xpLabel").textContent=progress.xp+" XP";
+ $("caseCount").textContent=progress.solved.length+" of 3 cases solved";
+ $("progressText").textContent=progress.solved.length+" / 3";
+ $("progressBar").style.width=(progress.solved.length/3*100)+"%";
+ $("badgeText").textContent="Badge: "+(progress.solved.length===3?"Master Detective":progress.solved.length===2?"Senior Investigator":progress.solved.length===1?"Field Detective":"Rookie Detective");
+ renderCards();
+}
+function renderCards(){
+ $("caseCards").innerHTML=CASES.map(c=>{
+  const solved=progress.solved.includes(c.id);
+  return `<article class="case-card"><div class="case-number">FILE NO. ${c.number}</div><div class="case-icon">${c.icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p><div class="case-meta"><span class="tag">${esc(c.difficulty)}</span><span class="tag">${esc(c.type)}</span>${solved?'<span class="tag" style="color:#9bc8a5;border-color:#48684f">Solved ✓</span>':''}</div><button class="btn ${solved?'secondary':''}" data-open="${c.id}">${solved?'Review case':'Investigate case'} →</button><div class="progress-wrap"><div class="progress-bar" style="width:${solved?100:0}%;background:${solved?'var(--green)':'var(--gold)'}"></div></div></article>`
+ }).join("");
+ document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openCase(b.dataset.open)));
+}
+function openCase(id){
+ activeCase=CASES.find(c=>c.id===id);selectedClue=0;selectedSuspect=null;puzzleSolved=false;usedHint=false;
+ $("modalEyebrow").textContent="CLASSIFIED · FILE "+activeCase.number;
+ $("modalTitle").textContent=activeCase.title;
+ $("gameContent").innerHTML=`
+ <div class="case-intro"><div><div class="eyebrow">${esc(activeCase.type)} · ${esc(activeCase.difficulty)} LEVEL</div><h3>${esc(activeCase.title)}</h3><p>${esc(activeCase.intro)}</p></div><div class="case-badge">${progress.solved.includes(id)?"CASE SOLVED":"ACTIVE INVESTIGATION"}</div></div>
+ <div class="game-grid">
+  <section class="subpanel"><h4>01 / Evidence locker</h4><div class="clue-list" id="clueList">${activeCase.clues.map((clue,i)=>`<button class="clue ${i===0?'selected':''}" data-clue="${i}"><span class="num">${String(i+1).padStart(2,"0")}</span><span><strong>${esc(clue.title)}</strong><small>${esc(clue.short)}</small></span></button>`).join("")}</div><div class="clue-detail" id="clueDetail">${esc(activeCase.clues[0].detail)}</div></section>
+  <section class="subpanel"><h4>02 / Persons of interest</h4><div class="suspect-list" id="suspectList">${activeCase.suspects.map((s,i)=>`<button class="suspect" data-suspect="${i}"><span class="avatar">${esc(s.name.split(" ").map(x=>x[0]).join("").slice(0,2))}</span><span><strong>${esc(s.name)}</strong><small>${esc(s.role)} · ${esc(s.bio)}</small></span></button>`).join("")}</div><div class="hint">Select the person whose story best matches the evidence.</div></section>
+ </div>
+ <section class="puzzle-box"><h4>03 / The cipher desk</h4><p>${esc(activeCase.puzzle)}</p><div class="answer-row"><input id="puzzleAnswer" autocomplete="off" aria-label="Puzzle answer" placeholder="Enter your answer…"><button class="btn" id="checkPuzzle">Check answer</button></div><div class="feedback" id="puzzleFeedback" aria-live="polite"></div><button class="btn ghost" id="hintButton" style="margin-top:8px;padding:8px 10px;font-size:11px">Request a hint (no penalty)</button></section>
+ <div class="submit-row"><div class="small-muted">Review the clues before making your accusation.</div><button class="btn" id="accuseButton">Make accusation →</button></div>
+ <div class="result" id="resultPanel" aria-live="polite"></div>`;
+ document.querySelectorAll("[data-clue]").forEach(b=>b.addEventListener("click",()=>{selectedClue=Number(b.dataset.clue);document.querySelectorAll("[data-clue]").forEach(x=>x.classList.toggle("selected",x===b));$("clueDetail").textContent=activeCase.clues[selectedClue].detail}));
+ document.querySelectorAll("[data-suspect]").forEach(b=>b.addEventListener("click",()=>{selectedSuspect=Number(b.dataset.suspect);document.querySelectorAll("[data-suspect]").forEach(x=>x.classList.toggle("selected",x===b))}));
+ $("checkPuzzle").addEventListener("click",checkPuzzle);
+ $("puzzleAnswer").addEventListener("keydown",e=>{if(e.key==="Enter")checkPuzzle()});
+ $("hintButton").addEventListener("click",()=>{usedHint=true;$("puzzleFeedback").className="feedback";$("puzzleFeedback").textContent="HINT: "+activeCase.hint});
+ $("accuseButton").addEventListener("click",makeAccusation);
+ $("gameModal").classList.add("open");document.body.style.overflow="hidden";
+}
+function checkPuzzle(){
+ const value=$("puzzleAnswer").value.trim().toLowerCase().replace(/[^a-z0-9]/g,"");
+ const accepted=activeCase.answers.map(a=>a.toLowerCase().replace(/[^a-z0-9]/g,""));
+ const fb=$("puzzleFeedback");
+ if(accepted.includes(value)){puzzleSolved=true;fb.className="feedback good";fb.textContent="Correct. Cipher cracked. Your evidence board is updated.";$("checkPuzzle").textContent="Solved ✓";$("checkPuzzle").disabled=true}
+ else{fb.className="feedback bad";fb.textContent="Not quite. Re-read the puzzle and try again."}
+}
+function makeAccusation(){
+ if(selectedSuspect===null){showToast("Select a person of interest first.");return}
+ if(!puzzleSolved){showToast("Crack the cipher before closing the case.");return}
+ const result=$("resultPanel");result.classList.add("show");
+ if(selectedSuspect===activeCase.correct){
+  const already=progress.solved.includes(activeCase.id);
+  if(!already){progress.solved.push(activeCase.id);progress.xp+=100;save()}
+  result.innerHTML=`<h4>${already?"Case reviewed.":"Case closed."} Well done, detective.</h4><p>${esc(activeCase.solution)}</p><p><strong>+${already?0:100} XP</strong> · ${already?"You've already earned the reward for this case.":"Evidence matched. Your report has been filed."}</p><button class="btn" id="backToFiles">Return to case files →</button>`;
+  $("accuseButton").disabled=true;
+  $("backToFiles").addEventListener("click",closeCase);
+ }else{
+  result.innerHTML=`<h4>Not enough evidence.</h4><p>That accusation doesn't fit all the clues. Revisit the evidence locker and compare each timeline before trying again.</p><button class="btn secondary" id="tryAgain">Review evidence</button>`;
+  $("tryAgain").addEventListener("click",()=>{result.classList.remove("show");$("accuseButton").disabled=false});
+ }
+}
+function closeCase(){$("gameModal").classList.remove("open");document.body.style.overflow="";activeCase=null}
+function showToast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)}
+$("closeModal").addEventListener("click",closeCase);
+$("gameModal").addEventListener("click",e=>{if(e.target===$("gameModal"))closeCase()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("gameModal").classList.contains("open"))closeCase()});
+$("resetProgress").addEventListener("click",()=>{if(confirm("Reset all solved cases and XP on this device?")){progress={solved:[],xp:0};save();showToast("Detective record reset.")}});
+renderProgress();
+</script>
+</body>
+</html>
